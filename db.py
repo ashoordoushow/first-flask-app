@@ -1,5 +1,13 @@
 import sqlite3
 
+def photos_all():
+    conn = connect_to_db()
+    rows = conn.execute(
+        """
+        SELECT * FROM photos
+        """
+    ).fetchall()
+    return [dict(row) for row in rows]
 
 def connect_to_db():
     conn = sqlite3.connect("database.db")
